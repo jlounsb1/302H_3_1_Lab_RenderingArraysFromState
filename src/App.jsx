@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// import './App.css'
+
 
 let learners=
     [
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <>
-    <h1>Here is a list of learners:</h1>
+    <h1>Learners:</h1>
     {learnerData.map((learner, index) => (
       <div className="eachLearner" key={index}>
         <Learner name={learner.name} bio={learner.bio} scores={learner.scores}/>
@@ -93,12 +93,13 @@ function Learner(props) {
         Exam Results:
       </h3>
 
-
+    <div className="scoreBox">
       {props.scores.map((score, index) => (
         <div className="result" key={index}>
         <Scores date={score.date} score={score.score}/>
         </div>
       ))} 
+    </div>
     </>
   )
 }
@@ -106,8 +107,8 @@ function Learner(props) {
 function Scores(props) {
   return (
     <>
-        <p>Date: {props.date}</p>
-        <p>Score: {props.score}</p>
+        <p><strong>Date: </strong>{props.date}</p>
+        <p><strong>Score: </strong>{props.score}</p>
     </>
   )
 }
