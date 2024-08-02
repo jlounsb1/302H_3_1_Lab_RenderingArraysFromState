@@ -70,9 +70,8 @@ function App() {
   return (
     <>
     <h1>Here is a list of learners:</h1>
-    
-    {learnerData.map((learner) => (
-      <div key={learner.name}>
+    {learnerData.map((learner, index) => (
+      <div className="eachLearner" key={index}>
         <Learner name={learner.name} bio={learner.bio} scores={learner.scores}/>
       </div>
     ))}
@@ -93,8 +92,12 @@ function Learner(props) {
       <h3>
         Exam Results:
       </h3>
-      {props.scores.map((score) => (
+
+
+      {props.scores.map((score, index) => (
+        <div className="result" key={index}>
         <Scores date={score.date} score={score.score}/>
+        </div>
       ))} 
     </>
   )
@@ -102,11 +105,10 @@ function Learner(props) {
 
 function Scores(props) {
   return (
-  <>
+    <>
         <p>Date: {props.date}</p>
         <p>Score: {props.score}</p>
-        
-  </>
+    </>
   )
 }
 
